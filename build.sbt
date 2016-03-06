@@ -1,11 +1,9 @@
-lazy val root = (project in file(".")).
-  enablePlugins(JavaAppPackaging).
-  settings(
-    name := "drum-set",
-    version := "1.0",
-    scalaVersion := "2.11.7",
-    mainClass in Compile := Some("DrumService")
-  )
+
+
+version := "1.0"
+scalaVersion := "2.11.7"
+mainClass in Compile := Some("DrumService")
+name := "drum-set" enablePlugins(JavaAppPackaging)
 val akkaVersion = "2.3.9"
 val sprayVersion = "1.3.1"
 
