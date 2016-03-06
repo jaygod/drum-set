@@ -1,6 +1,7 @@
 import javax.sound.sampled.AudioSystem
 
 import akka.actor.{Props, ActorSystem}
+import spray.http.MediaTypes._
 import spray.routing.SimpleRoutingApp
 
 import scala.util.Properties
@@ -71,6 +72,19 @@ object DrumService extends App with SimpleRoutingApp {
           "OK"
         }
       }
-    }
+    } ~
+      path("") {
+        get {
+          respondWithMediaType(`text/html`) {
+            complete {
+              <html>
+                <body>
+                  <h1>This is the Spray.io based back-end server</h1>
+                </body>
+              </html>
+            }
+          }
+        }
+      }
   }
 }
