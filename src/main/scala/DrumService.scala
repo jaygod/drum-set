@@ -3,6 +3,8 @@ import javax.sound.sampled.AudioSystem
 import akka.actor.{Props, ActorSystem}
 import spray.routing.SimpleRoutingApp
 
+import scala.util.Properties
+
 
 /**
   * Created by Kuba on 2016-03-06.
@@ -42,8 +44,8 @@ object DrumService extends SimpleRoutingApp {
   def rideAudioIn = AudioSystem.getAudioInputStream(ride)
 
   def main(args: Array[String]) {
-
-    startServer(interface = "localhost", port = 9090) {
+    val port = Properties.envOrElse("PORT", "8080").toInt
+    startServer(interface = "0.0.0.0", port = port) {
       get {
         path("play" / "sound" / Segment) { note =>
           note match {
