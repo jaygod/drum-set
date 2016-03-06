@@ -43,34 +43,32 @@ object DrumService extends App with SimpleRoutingApp {
 
   def rideAudioIn = AudioSystem.getAudioInputStream(ride)
 
-  def main(args: Array[String]) {
-    val port = Properties.envOrElse("PORT", "8080").toInt
-    startServer(interface = "0.0.0.0", port = port) {
-      get {
-        path("play" / "sound" / Segment) { note =>
-          note match {
-            case "Space" =>
-              playActor ! Play(kickAudioIn, 0)
-            case "Enter" =>
-              playActor ! Play(snoreAudioIn, 0)
-            case "Shift" =>
-              playActor ! Play(hihatAudioIn, 0)
-            case "W" =>
-              playActor ! Play(crash1AudioIn, 0)
-            case "E" =>
-              playActor ! Play(crash2AudioIn, 0)
-            case "I" =>
-              playActor ! Play(tomFAudioIn, 0)
-            case "O" =>
-              playActor ! Play(tomLAudioIn, 0)
-            case "P" =>
-              playActor ! Play(tomMAudioIn, 0)
-            case "Q" =>
-              playActor ! Play(rideAudioIn, 0)
-          }
-          complete {
-            "OK"
-          }
+  val port = Properties.envOrElse("PORT", "8080").toInt
+  startServer(interface = "0.0.0.0", port = port) {
+    get {
+      path("play" / "sound" / Segment) { note =>
+        note match {
+          case "Space" =>
+            playActor ! Play(kickAudioIn, 0)
+          case "Enter" =>
+            playActor ! Play(snoreAudioIn, 0)
+          case "Shift" =>
+            playActor ! Play(hihatAudioIn, 0)
+          case "W" =>
+            playActor ! Play(crash1AudioIn, 0)
+          case "E" =>
+            playActor ! Play(crash2AudioIn, 0)
+          case "I" =>
+            playActor ! Play(tomFAudioIn, 0)
+          case "O" =>
+            playActor ! Play(tomLAudioIn, 0)
+          case "P" =>
+            playActor ! Play(tomMAudioIn, 0)
+          case "Q" =>
+            playActor ! Play(rideAudioIn, 0)
+        }
+        complete {
+          "OK"
         }
       }
     }
