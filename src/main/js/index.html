@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="resources/drums.jpg" alt="Drums" align="middle">
+
+<script>
+    	document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 32) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/Space',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+    });
+
+    }
+    else if (event.keyCode == 13) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/Enter',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+     else if (event.keyCode == 16) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/Shift',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+    else if (event.keyCode == 87) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/W',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+    else if (event.keyCode == 69) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/E',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+else if (event.keyCode == 73) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/I',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+else if (event.keyCode == 79) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/O',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+else if (event.keyCode == 80) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/P',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+else if (event.keyCode == 81) {
+        $.ajax({
+        url: 'http://localhost:9090/play/sound/Q',
+        type: 'GET',
+        success: function() { alert('GET completed'); }
+         });
+    }
+
+}, true);
+
+
+</script>
+</body>
+</html>
