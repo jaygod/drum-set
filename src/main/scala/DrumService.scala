@@ -41,7 +41,7 @@ object DrumService extends App with SimpleRoutingApp {
 
   def rideAudioIn = AudioSystem.getAudioInputStream(ride)
 
-  startServer(interface = "89.68.158.155", port = 9090) {
+  startServer(interface = "localhost", port = 9090) {
     get {
       path("play" / "sound" / Segment) { note =>
         note match {
