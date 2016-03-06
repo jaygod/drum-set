@@ -9,7 +9,7 @@ import scala.util.Properties
 /**
   * Created by Kuba on 2016-03-06.
   */
-object DrumService extends SimpleRoutingApp {
+object DrumService extends App with SimpleRoutingApp {
 
   implicit val system = ActorSystem("HelloSystem")
   // default Actor constructor
