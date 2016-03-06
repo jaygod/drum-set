@@ -7,7 +7,7 @@ import spray.routing.SimpleRoutingApp
 /**
   * Created by Kuba on 2016-03-06.
   */
-object DrumService extends App with SimpleRoutingApp {
+object DrumService extends SimpleRoutingApp {
 
   implicit val system = ActorSystem("HelloSystem")
   // default Actor constructor
@@ -41,31 +41,34 @@ object DrumService extends App with SimpleRoutingApp {
 
   def rideAudioIn = AudioSystem.getAudioInputStream(ride)
 
-  startServer(interface = "localhost", port = 9090) {
-    get {
-      path("play" / "sound" / Segment) { note =>
-        note match {
-          case "Space" =>
-            playActor ! Play(kickAudioIn, 0)
-          case "Enter" =>
-            playActor ! Play(snoreAudioIn, 0)
-          case "Shift" =>
-            playActor ! Play(hihatAudioIn, 0)
-          case "W" =>
-            playActor ! Play(crash1AudioIn, 0)
-          case "E" =>
-            playActor ! Play(crash2AudioIn, 0)
-          case "I" =>
-            playActor ! Play(tomFAudioIn, 0)
-          case "O" =>
-            playActor ! Play(tomLAudioIn, 0)
-          case "P" =>
-            playActor ! Play(tomMAudioIn, 0)
-          case "Q" =>
-            playActor ! Play(rideAudioIn, 0)
-        }
-        complete {
-          "OK"
+  def main(args: Array[String]) {
+
+    startServer(interface = "localhost", port = 9090) {
+      get {
+        path("play" / "sound" / Segment) { note =>
+          note match {
+            case "Space" =>
+              playActor ! Play(kickAudioIn, 0)
+            case "Enter" =>
+              playActor ! Play(snoreAudioIn, 0)
+            case "Shift" =>
+              playActor ! Play(hihatAudioIn, 0)
+            case "W" =>
+              playActor ! Play(crash1AudioIn, 0)
+            case "E" =>
+              playActor ! Play(crash2AudioIn, 0)
+            case "I" =>
+              playActor ! Play(tomFAudioIn, 0)
+            case "O" =>
+              playActor ! Play(tomLAudioIn, 0)
+            case "P" =>
+              playActor ! Play(tomMAudioIn, 0)
+            case "Q" =>
+              playActor ! Play(rideAudioIn, 0)
+          }
+          complete {
+            "OK"
+          }
         }
       }
     }

@@ -7,29 +7,13 @@ import akka.actor.Actor
   */
 class PlayActor extends Actor {
   override def receive: Receive = {
-    case Play(inputStream,timeout) => playSound(inputStream,timeout)
+    case Play(inputStream, timeout) => playSound(inputStream, timeout)
   }
 
   def playSound(inputStream: AudioInputStream, timeout: Int): Unit = {
     val clip = AudioSystem.getClip
     clip.open(inputStream)
-
-    timeout match {
-      case 0 => clip.loop(0)
-      case _ => {
-        new Thread(new Runnable {
-          def run() {
-            while (true) {
-              val clip = AudioSystem.getClip
-              def hihatAudioIn = AudioSystem.getAudioInputStream(getClass.getResource("drums/HIHAT01.aif"))
-              clip.open(hihatAudioIn)
-              clip.start
-              Thread.sleep(timeout)
-            }
-          }
-        }).start
-      }
-    }
+    clip.loop(0)
   }
 }
 
