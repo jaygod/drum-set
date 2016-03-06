@@ -1,14 +1,13 @@
-name := "drum-set"
+lazy val root = (project in file(".")).
+  enablePlugins(JavaAppPackaging).
+  settings(
+    name := "drum-set",
+    version := "1.0",
+    scalaVersion := "2.11.7"
+  )
 
-version := "1.0"
-
-scalaVersion := "2.11.7"
 
 mainClass in Compile := Some("DrumService")
-
-resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-
-val foo = enablePlugins(JavaAppPackaging)
 
 val akkaVersion = "2.3.9"
 val sprayVersion = "1.3.1"
