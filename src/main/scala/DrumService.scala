@@ -15,15 +15,15 @@ object DrumService extends App with SimpleRoutingApp {
   // default Actor constructor
   val playActor = system.actorOf(Props[PlayActor], name = "helloactor")
 
-  val snore = getClass.getResource("drums/real-life-SN2.wav")
-  val kick = getClass.getResource("drums/real-life-KICK1.wav")
+  val snore = getClass.getResource("drums/real-life-SN2.WAV")
+  val kick = getClass.getResource("drums/real-life-KICK1.WAV")
   val hihat = getClass.getResource("drums/HHCLOSE1.aif")
-  val crash1 = getClass.getResource("drums/real-life-CRASH1.wav")
-  val crash2 = getClass.getResource("drums/real-life-CRASH2.wav")
-  val tomF = getClass.getResource("drums/real-life-TOM2FAMBI.wav")
-  val tomL = getClass.getResource("drums/real-life-TOM2LAMBI.wav")
-  val tomM = getClass.getResource("drums/real-life-TOM2MAMBI.wav")
-  val ride = getClass.getResource("drums/real-life-RIDE.wav")
+  val crash1 = getClass.getResource("drums/real-life-CRASH1.WAV")
+  val crash2 = getClass.getResource("drums/real-life-CRASH2.WAV")
+  val tomF = getClass.getResource("drums/real-life-TOM2FAMBI.WAV")
+  val tomL = getClass.getResource("drums/real-life-TOM2LAMBI.WAV")
+  val tomM = getClass.getResource("drums/real-life-TOM2MAMBI.WAV")
+  val ride = getClass.getResource("drums/real-life-RIDE.WAV")
 
   def snoreAudioIn = AudioSystem.getAudioInputStream(snore)
 
